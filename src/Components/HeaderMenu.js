@@ -35,8 +35,6 @@ export default class HeaderMenu extends Component {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            
-
         )
     }
 }
