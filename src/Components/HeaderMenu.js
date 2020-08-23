@@ -23,14 +23,14 @@ export default class HeaderMenu extends Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <NavLink className="menu-link" to="/home">Home</NavLink>
-                            <NavLink className="menu-link" to="/posts">Posts</NavLink>
-                            <NavLink className="menu-link" to="/categories">Categories</NavLink>
-                            <NavLink className="menu-link" to="/account">Your account</NavLink>
+                            <NavLink className="menu-link" to="/home" activeClassName="selected-link">Home</NavLink>
+                            <NavLink className="menu-link" to="/posts" activeClassName="selected-link">Posts</NavLink>
+                            <NavLink className="menu-link" to="/categories" activeClassName="selected-link">Categories</NavLink>
+                            <NavLink className="menu-link" to="/account" activeClassName="selected-link">Your account</NavLink>
                         </Nav>
                         <Nav className="mr-2">
-                            <NavLink className="menu-link" to="/">Sign in</NavLink>
-                            <NavLink className="menu-link" to="/">Log in</NavLink>
+                            <NavLink className="menu-link" to="/sign-in" activeClassName="selected-link">Sign in</NavLink>
+                            <NavLink className="menu-link" to="/log-in" activeClassName="selected-link">Log in</NavLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

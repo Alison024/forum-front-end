@@ -1,15 +1,17 @@
 import React,{ Component } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 //import forum_logo from './forum-logo.jpg'
 //import {Router} from "react-router"
+import Spinner from 'react-bootstrap/Spinner'
 import PostCard from '../Components/PostCard.js'
+
 export default class PostsPage extends Component {
 
     
     constructor(props) {
         super(props)
         this.state = {
-            isloaded:true,
+            isLoaded:true,
             dataJson:[],
             error:null
         }
@@ -30,10 +32,10 @@ export default class PostsPage extends Component {
                     dataJson: result
                 });
             },
-            (error) => {
+            (errorr) => {
                 this.setState({
                     isLoaded: true,
-                    error:error
+                    error:errorr
                 });
             }
         )
@@ -45,15 +47,24 @@ export default class PostsPage extends Component {
         if(this.state.error){
         return <div className="error-div">Error: {this.state.error.message}</div>
         }else if(!this.state.isLoaded){
-            return <div className="load-div">Loading...</div>
+            return(
+                <div className="loading-div">
+                    <Spinner animation="border" role="status" className="spinner">
+                    <span className="sr-only">Loading...</span>
+                    </Spinner>
+                </div>
+            )
         }else{
             return (
-                <ul>
-                    {this.state.dataJson.map(item=>(
-                        <PostCard post={item}/>
-                        //<li key={item.id}>{item.title}{item.post_Rate}</li>
-                    ))}
-                </ul>
+                <Container>
+                    <div>
+                        {this.state.dataJson.map(item=>(
+                            <PostCard key={item.id} post={item}/>
+                            //<li key={item.id}>{item.title}{item.post_Rate}</li>
+                        ))}
+                    </div>
+                </Container>
+                
             )
         }
     }

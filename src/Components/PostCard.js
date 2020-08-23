@@ -1,5 +1,5 @@
 import React,{ Component } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+//import { Navbar, Container, Nav } from "react-bootstrap";
 //import {Router} from "react-router"
 import {NavLink} from "react-router-dom"
 import './PostCard.css';
@@ -20,14 +20,15 @@ export default class PostsPage extends Component {
         }
     }
     render(){
-        let stringId = this.state.id;
+        let stringId = "/posts/"+this.state.id;
         return (
-            <div className="post-card flex-lg-wrap">
-                <Nav>
-                    <NavLink className="link" to="/ddd">{this.state.title}</NavLink>
-                </Nav>
-                <span>Rate:{this.state.post_Rate}</span>
-                <span>Date:{this.state.date}</span>
+            <div className="post-card">
+                <NavLink className="link-on-post" to={stringId}>{this.state.title}</NavLink>
+                <div className="post-card-info">
+                    <div>Rate:{this.state.post_Rate}</div>
+                    <div>Date:{this.state.date}</div>
+                </div>
+                
             </div>
         )
     }
