@@ -2,7 +2,7 @@ import React,{ Component } from "react";
 import { Container } from "react-bootstrap";
 import Spinner from 'react-bootstrap/Spinner'
 import './Post.css';
-
+import AuthorDiv from './AuthorDiv.js'
 export default class Post extends Component {
 
     
@@ -10,7 +10,7 @@ export default class Post extends Component {
         super(props)
         this.state = {
             post_Id:parseInt(props.match.params.number, 10),
-            isLoaded:true,
+            isLoaded:false,
             data:null,
             error:null
         }
@@ -20,22 +20,13 @@ export default class Post extends Component {
         this.getValueOfPost();
     }
     getValueOfPost(){
-       let targetUrl = 'https://localhost:5001/api/post/getUserById/'+this.state.post_Id;
+       let targetUrl = 'https://localhost:5001/api/post/getPostById/'+this.state.post_Id;
        fetch(targetUrl)
        .then(res => res.json())
        .then((result) => {
+           
                this.setState({
                     isLoaded: true,
-                    id:result.id,
-                    title:result.title,
-                    author_Id:result.author_Id,
-                    paren_Post_Id:result.paren_Post_Id,
-                    post_Type_Id:result.post_Type_Id,
-                    post_Content:result.post_Content,
-                    date:result.date,
-                    post_Rate:result.post_Rate,
-                    post_Images:result.post_Images,
-                    post_Sub_Categories:result.post_Sub_Categories,
                     data:result
                });
            },
@@ -61,15 +52,18 @@ export default class Post extends Component {
                 </div>
         )
         }else{
-                return(
+            return(
                 <Container>
-                    <div>{this.state.post_Content}</div>
-                    <div>{this.state.author_Id}</div>
-                    <div>{this.state.date}</div>
-                    <div>{this.state.post_Rate}</div>
-                    
-                    
-                </Container>
+                    <div className="post-info md-12">
+                        <div>{this.state.data.date}</div>
+                        <div><AuthorDiv id={this.state.data.author_Id}/></div>
+                    </div>
+                    <h1>{this.state.data.title}</h1>
+                    <div>{this.state.data.post_Content}</div>
+                    <div>
+                        {this.state.data.post_Images.map(x=><div>{x.image.image_Url}</div>)}
+                    </div> 
+                    </Container>
             )
         }
     }
