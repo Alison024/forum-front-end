@@ -1,0 +1,12 @@
+.hidden{
+    display: none;
+}
+.slide-img{
+    max-height: 600px;
+}
+.carousel-div{
+    background-color: #34393b;
+}
+.carousel-inner img{
+    margin: auto;
+}

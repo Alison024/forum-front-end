@@ -1,7 +1,6 @@
 import React,{ Component } from "react";
-import { Container } from "react-bootstrap";
-import Spinner from 'react-bootstrap/Spinner'
-import './Post.css';
+
+//import './Post.css';
 
 export default class AuthorDiv extends Component {
 

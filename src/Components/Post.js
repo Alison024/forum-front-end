@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Spinner from 'react-bootstrap/Spinner'
 import './Post.css';
 import AuthorDiv from './AuthorDiv.js'
+import PostCarousel from './PostCarousel.js'
 export default class Post extends Component {
 
     
@@ -59,11 +60,12 @@ export default class Post extends Component {
                         <div><AuthorDiv id={this.state.data.author_Id}/></div>
                     </div>
                     <h1>{this.state.data.title}</h1>
-                    <div>{this.state.data.post_Content}</div>
+                    <div className="content-post-div">{this.state.data.post_Content}</div>
                     <div>
-                        {this.state.data.post_Images.map(x=><div>{x.image.image_Url}</div>)}
+                        <PostCarousel data = {this.state.data.post_Images}/>
+                        {/*this.state.data.post_Images.map(x=><div>{x.image.image_Url}</div>)*/}
                     </div> 
-                    </Container>
+                </Container>
             )
         }
     }

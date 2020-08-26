@@ -1,0 +1,17 @@
+.carousel-img{
+    max-height: 600px;
+}
+.carousel-div{
+    background-color: #34393b;
+    margin: auto;
+    height: 600px;
+}
+.carousel-inner img{
+    margin-top: 20px;
+    margin: auto;
+}
+.item{
+    max-height: 600px;
+    position: relative;
+    height:100%;
+}

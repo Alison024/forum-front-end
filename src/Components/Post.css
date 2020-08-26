@@ -13,3 +13,6 @@
     display:flex;
     justify-content: space-between;
 }
+.content-post-div{
+    padding: 20px;
+}
